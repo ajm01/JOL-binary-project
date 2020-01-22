@@ -1,0 +1,2 @@
+project-name: testapp2
+stack: dev.local/appsody/java-openliberty:0.1
