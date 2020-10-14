@@ -4,26 +4,39 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <!--required parent POM-->
-        <groupId>dev.appsody</groupId>
-        <artifactId>java-openliberty</artifactId>
-        <version>[0.1, 0.2)</version>
-    </parent>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- Plugins -->
+        <version.maven-war-plugin>3.2.2</version.maven-war-plugin>
+        <version.dockerfile-maven-plugin>1.4.10</version.dockerfile-maven-plugin>
+        <version.maven-surefire-plugin>3.0.0-M1</version.maven-surefire-plugin>
+        <version.maven-failsafe-plugin>3.0.0-M1</version.maven-failsafe-plugin>
+        <!-- OpenLiberty runtime -->
+        <liberty.groupId>io.openliberty</liberty.groupId>
+        <liberty.artifactId>openliberty-runtime</liberty.artifactId>
+        <http.port>9080</http.port>
+        <https.port>9443</https.port>
+        <packaging.type>usr</packaging.type>
+	<app.name>${project.artifactId}</app.name>
+	 <file.repo.name>migrationassets</file.repo.name>	
+        <!-- Gets overridden in run/debug/test -->
+        <wlp.install.dir>${project.build.directory}/liberty/wlp</wlp.install.dir>
+    </properties>
+
 
     <groupId>dev.appsody.starter.java-openliberty</groupId>
     <artifactId>tamigration</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <properties>
-        <file.repo.name>migrationassets</file.repo.name>
-    </properties>
     <repositories>
         <!--local migration assets repo-->
         <repository>
             <id>project.local</id>
             <name>project</name>
-            <url>file:${project.basedir}/${file.repo.name}</url>
+            <url>file:/work/outer-loop-app/${file.repo.name}</url>
         </repository>
     </repositories>
     <dependencies>
